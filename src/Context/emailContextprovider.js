@@ -1,6 +1,7 @@
 import AuthContex from "./CreateContext";
-import React from "react";
+import React, { useState } from "react";
 const EmailcontextProvider = (props) => {
+  const [loginStates, setloginStates] = useState(false);
   const loginHandler = async (obj) => {
     console.log("loginHandler", obj);
     try {
@@ -20,6 +21,7 @@ const EmailcontextProvider = (props) => {
       } else {
         // console.log(data.idToken);
         console.log("successfully signIn");
+        setloginStates(true);
       }
     } catch (error) {
       alert(error.message);
@@ -55,6 +57,7 @@ const EmailcontextProvider = (props) => {
       value={{
         login: loginHandler,
         signup: signupHandler,
+        loginState: loginStates,
       }}
     >
       {props.children}
