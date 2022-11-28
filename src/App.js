@@ -8,9 +8,11 @@ import AuthContex from "./Context/CreateContext";
 import ContactDetails from "./components/Login/ContactDetails";
 import LoadingSpinner from "./components/Loadingspinner/LoadingSpinner";
 import ExpenseForm from "./components/Expense/ExpenseForm";
-import ExpenseContextProvider from "./Context/ExpenseContext/ExpenseContextProvider";
+import { useSelector } from "react-redux";
 function App() {
   const ctx = useContext(AuthContex);
+  // const item = useSelector((state) => console.log(state.expense.isisrendering));
+  // console.log(item);
   //console.log(ctx);
   return (
     <React.Fragment>
@@ -30,9 +32,7 @@ function App() {
           <AuthForm></AuthForm>
         </Route>
         <Route path="/expenseform" exact>
-          <ExpenseContextProvider>
-            <ExpenseForm></ExpenseForm>
-          </ExpenseContextProvider>
+          <ExpenseForm></ExpenseForm>
         </Route>
 
         <Route path="*">
