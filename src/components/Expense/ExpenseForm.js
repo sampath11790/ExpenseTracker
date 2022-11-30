@@ -24,6 +24,13 @@ const ExpenseForm = () => {
       categorys: enteredCategorys.current.value,
       description: enteredDescription.current.value,
     };
+    if (
+      ExpenseObject.amount === "" ||
+      ExpenseObject.categorys === "" ||
+      ExpenseObject.description === ""
+    ) {
+      return;
+    }
     try {
       const response = await fetch(
         `https://expense-tracker-auth-a692a-default-rtdb.firebaseio.com/expense/${
@@ -40,6 +47,7 @@ const ExpenseForm = () => {
       const data = await response.json();
 
       Dispatch(ExpenseSliceAction.updateList(ExpenseObject));
+      Dispatch(ExpenseSliceAction.setIsupdate(false));
 
       enteredAmount.current.value = null;
       enteredCategorys.current.value = null;
