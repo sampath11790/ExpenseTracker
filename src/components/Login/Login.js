@@ -50,6 +50,7 @@ const AuthForm = () => {
         if (isLogin) {
           localStorage.setItem("id", data.idToken);
           localStorage.setItem("islogin", "true");
+          localStorage.setItem("mailid", obj.email);
           Dispatch(AuthSliceAction.setLoginsate(data.idToken));
         }
       }
