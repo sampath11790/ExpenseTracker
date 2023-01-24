@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Header.module.css";
 import { NavLink, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ThemeToggle from "../DarktTheme/ThemeToggle";
 import Logout from "./Logout";
+import { Dropdown, ToggleButton } from "react-bootstrap";
 const Header = () => {
+  const [toggle, settoggle] = useState(true);
   const total = useSelector((state) => state.expense.TotalAmount);
   const Items = useSelector((state) => state.expense.items);
   const loginState = useSelector((state) => state.auth.loginState);
@@ -37,16 +39,28 @@ const Header = () => {
       </button>
     </div>
   );
+  let changepos = { top: "-1000px" };
+  let postion = { top: "30px" };
+  const menutoggle = () => {
+    settoggle(!toggle);
+    console.log("settoggle");
+  };
   return (
     <div className={classes["container-header"]}>
-      <header>
-        {/* {!loginState && (
-          <div>
-            <h3>ExpenseForm</h3>
-          </div>
-        )} */}
+      {/* <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Dropdown Button
+        </Dropdown.Toggle>
 
-        <ul>
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown> */}
+      <header>
+        <h1 className={classes["menutoggle"]} onClick={menutoggle}>
+          Menu
+        </h1>
+        <ul style={toggle ? postion : changepos} onClick={menutoggle}>
           <li>
             <NavLink to="/expenseform">Expense</NavLink>
           </li>

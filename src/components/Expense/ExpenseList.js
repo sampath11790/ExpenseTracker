@@ -1,6 +1,7 @@
 import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import classes from "./ExpenseList.module.css";
+import { Table } from "react-bootstrap";
 
 import { useSelector } from "react-redux";
 
@@ -13,15 +14,30 @@ const ExpenseList = (props) => {
     <ExpenseItem
       onUpdate={props.onUpdate}
       id={item.id}
-      key={index}
+      key={item.id}
       amount={item.amount}
       categorys={item.categorys}
       description={item.description}
     ></ExpenseItem>
   ));
   return (
-    <div className={classes["EachListItem-container"]}>
-      <ul>{EachListItem}</ul>
+    <div>
+      <Table striped bordered hover variant="dark">
+        <table>
+          <thead>
+            <tr keys="headtable">
+              <th>Amount</th>
+              <th>Categorys</th>
+              <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+
+          <tbody>{EachListItem}</tbody>
+        </table>
+      </Table>
+      {/* <ul></ul> */}
     </div>
   );
 };

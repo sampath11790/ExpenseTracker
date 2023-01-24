@@ -7,6 +7,7 @@ import { ExpenseSliceAction } from "../../store/Expense";
 const ExpenseItem = (props) => {
   const items = useSelector((state) => state.expense.items);
   const Premium = <button className={classes["Premium"]}>Premium</button>;
+
   const Dispatch = useDispatch();
   const EditButtonHandler = () => {
     props.onUpdate(props);
@@ -20,10 +21,12 @@ const ExpenseItem = (props) => {
   };
   const deleteButtonHandler = async () => {
     // ctx.deleteItem(props.id);
-    console.log("deleteButtonHandler", props);
+    console.log("deleteButtonHandler", props.id);
+    let emailId = localStorage.getItem("mailid").replace(/[&@.]/g, "");
+
     try {
       const response = await fetch(
-        `https://expense-tracker-auth-a692a-default-rtdb.firebaseio.com/expense/${props.id}.json`,
+        `https://expense-tracker-auth-a692a-default-rtdb.firebaseio.com/${emailId}/${props.id}.json`,
         {
           method: "DELETE",
 
@@ -43,15 +46,39 @@ const ExpenseItem = (props) => {
     }
   };
   return (
-    <div className={classes["ExpenseItem-li-container"]}>
-      <li className={classes["ExpenseItem-li"]}>
-        <p>{props.amount}</p>
-        <p>{props.categorys}</p>
-        <p>{props.description}</p>
+    <tr key={props.id}>
+      <td>{props.amount}</td>
+      <td>{props.categorys}</td>
+      <td>{props.description}</td>
+      <td
+        onClick={() => EditButtonHandler(props.id)}
+        className={classes["edit-btn"]}
+      >
+        {/* <button>
+            edit
+          </button> */}
+        Edit
+      </td>
+      <td
+        className={classes["delete-btn"]}
+        onClick={() => deleteButtonHandler(props.id)}
+      >
+        {/* <button
+           
+            className={classes["delete-btn"]}
+          >
+            delete
+          </button> */}
+        delete
+      </td>
 
-        <div className={classes["btn-cont"]}>
-          {/* {props.amount >= 10000 && Premium} */}
-          <button onClick={EditButtonHandler} className={classes["edit-btn"]}>
+      {/* <p>{props.amount}</p>
+        <p>{props.categorys}</p>
+        <p>{props.description}</p> */}
+
+      {/* <div className={classes["btn-cont"]}> */}
+      {/* {props.amount >= 10000 && Premium} */}
+      {/* <button onClick={EditButtonHandler} className={classes["edit-btn"]}>
             Edit
           </button>
           <button
@@ -61,8 +88,8 @@ const ExpenseItem = (props) => {
             delete
           </button>
         </div>
-      </li>
-    </div>
+      </li> */}
+    </tr>
   );
 };
 export default ExpenseItem;

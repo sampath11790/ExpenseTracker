@@ -17,7 +17,7 @@
   padding: 2.5%;
   padding-top: 17px;
   padding-left: 5%;
-  width: 70%;
+  width: 90%;
   border-radius: 15px;
   background-color: transparent;
   box-shadow: 0px 0px 16px 0px rgba(104, 78, 130, 0.485);
@@ -55,4 +55,31 @@
   background-color: rgb(136, 60, 60);
   border-radius: 25px;
   color: azure;
+}
+@media screen and (max-width: 700px) {
+  .ContactDetails {
+    background-color: inherit;
+    padding: 0%;
+    width: 100%;
+    height: auto;
+  }
+  .ContactDetails-form input {
+    width: inherit;
+  }
+  .ContactDetails-form {
+    padding: 2.5%;
+    padding-top: 17px;
+    padding-left: 4%;
+    width: 100%;
+  }
+  .ContactDetails-form button {
+    padding: 8px;
+
+    margin-top: 5%;
+    width: auto;
+
+    font-size: 100%;
+    background-color: rgb(136, 60, 60);
+    border-radius: 15px;
+  }
 }

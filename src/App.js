@@ -39,8 +39,8 @@ function App() {
   return (
     <>
       {" "}
-      <Suspense fallback={<p className="loading">Loading .....</p>}>
-        <div className={dark || !loginState ? "light" : ""}>
+      <Suspense fallback={<p className="">Loading .....</p>}>
+        <div className={dark || !loginState ? "light" : "dark"}>
           {loginState && <Header></Header>}
           {console.log("app rendeing")}
           {!loginState ? (

@@ -10,7 +10,10 @@ html {
 
 body {
   margin: 0;
-  background-color: #142d5ae4;
+  background: #00040ae4;
+}
+.dark {
+  background: #010816e4;
 }
 .dummy {
   margin: 0;

@@ -50,3 +50,40 @@
   padding: 2%;
   cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+  .userheader {
+    display: flex;
+    justify-content: flex-start;
+    background-color: blanchedalmond;
+  }
+  .userheader {
+    flex-direction: column;
+  }
+  .userheader p {
+    align-items: center;
+    text-align: center;
+  }
+  .button-container {
+    display: flex;
+
+    justify-content: flex-start;
+  }
+  .verify-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .verify-container img {
+    margin: 3% auto;
+    width: 25%;
+    border-radius: 50%;
+  }
+  .verify-container button {
+    margin: 3% auto;
+
+    width: auto;
+    font-size: medium;
+    padding: 2%;
+    cursor: pointer;
+  }
+}
